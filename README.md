@@ -1,6 +1,9 @@
 <h1 align="center">// Comment.nvim </h1>
 <p align="center"><sup>⚡ Smart and Powerful commenting plugin for neovim ⚡</sup></p>
 
+> Fork notice: this repository is a fork of [numToStr/Comment.nvim](https://github.com/numToStr/Comment.nvim).
+> The original repository is no longer maintained, and since a annoying nil error was not fixed for a long time, I decided to fork it and maintain it myself.
+
 ![Comment.nvim](https://user-images.githubusercontent.com/42532967/136532939-926a8350-84b7-4e78-b045-fe21b5947388.gif "Commenting go brrrr")
 
 ### ✨ Features
@@ -22,7 +25,7 @@
 ```lua
 -- add this to your lua/plugins.lua, lua/plugins/init.lua,  or the file you keep your other plugins:
 {
-    'numToStr/Comment.nvim',
+    'jaller698/Comment.nvim',
     opts = {
         -- add any options here
     }
@@ -34,7 +37,7 @@
 
 ```lua
 use {
-    'numToStr/Comment.nvim',
+    'jaller698/Comment.nvim',
     config = function()
         require('Comment').setup()
     end
@@ -44,7 +47,7 @@ use {
 - With [vim-plug](https://github.com/junegunn/vim-plug)
 
 ```vim
-Plug 'numToStr/Comment.nvim'
+Plug 'jaller698/Comment.nvim'
 
 " Somewhere after plug#end()
 lua require('Comment').setup()
@@ -60,7 +63,7 @@ lua require('Comment').setup()
 
 First you need to call the `setup()` method to create the default mappings.
 
-> **Note** - If you are facing **Keybindings are mapped but they are not working** issue then please try [this](https://github.com/numToStr/Comment.nvim/issues/115#issuecomment-1032290098)
+> **Note** - If you are facing **Keybindings are mapped but they are not working** issue then please try [this](https://github.com/jaller698/Comment.nvim/issues/115#issuecomment-1032290098)
 
 - Lua
 
@@ -197,8 +200,8 @@ These mappings are enabled by default. (config: `mappings.extra`)
 This plugin has native **treesitter** support for calculating `commentstring` which works for multiple (injected/embedded) languages like Vue or Markdown. But due to the nature of the parsed tree, this implementation has some known limitations.
 
 1. No `jsx/tsx` support. Its implementation was quite complicated.
-2. Invalid comment on the region where one language ends and the other starts. [Read more](https://github.com/numToStr/Comment.nvim/pull/62#issuecomment-972790418)
-3. Unexpected comment on a line with multiple languages. [#144](https://github.com/numToStr/Comment.nvim/issues/144)
+2. Invalid comment on the region where one language ends and the other starts. [Read more](https://github.com/jaller698/Comment.nvim/pull/62#issuecomment-972790418)
+3. Unexpected comment on a line with multiple languages. [#144](https://github.com/jaller698/Comment.nvim/issues/144)
 
 For advance use cases, use [nvim-ts-context-commentstring](https://github.com/JoosepAlviste/nvim-ts-context-commentstring). See [`pre_hook`](#pre-hook) section for the integration.
 
@@ -254,8 +257,8 @@ You can also integrate [nvim-ts-context-commentstring](https://github.com/Joosep
 
 The `post_hook` can be implemented to cover some niche use cases like the following:
 
-- Using newlines instead of padding e.g. for commenting out code in C with `#if 0`. See an example [here](https://github.com/numToStr/Comment.nvim/issues/38#issuecomment-945082507).
-- Duplicating the commented block (using `pre_hook`) and moving the cursor to the next block (using `post_hook`). See [this](https://github.com/numToStr/Comment.nvim/issues/70).
+- Using newlines instead of padding e.g. for commenting out code in C with `#if 0`. See an example [here](https://github.com/jaller698/Comment.nvim/issues/38#issuecomment-945082507).
+- Duplicating the commented block (using `pre_hook`) and moving the cursor to the next block (using `post_hook`). See [this](https://github.com/jaller698/Comment.nvim/issues/70).
 
 > NOTE: When pressing `gc`, `gb` and friends, `cmode` (Comment mode) inside `pre_hook` will always be toggle because when pre-hook is called, in that moment we don't know whether `gc` or `gb` will comment or uncomment the lines. But luckily, we do know this before `post_hook` and this will always receive either comment or uncomment status
 

@@ -1,6 +1,8 @@
 <h1 align="center">// Comment.nvim </h1>
 <p align="center"><sup>⚡ Smart and Powerful commenting plugin for neovim ⚡</sup></p>
 
+> Fork notice: this repository is a fork of [numToStr/Comment.nvim](https://github.com/numToStr/Comment.nvim).
+
 ![Comment.nvim](https://user-images.githubusercontent.com/42532967/136532939-926a8350-84b7-4e78-b045-fe21b5947388.gif "Commenting go brrrr")
 
 ### ✨ Features
@@ -22,7 +24,7 @@
 ```lua
 -- add this to your lua/plugins.lua, lua/plugins/init.lua,  or the file you keep your other plugins:
 {
-    'numToStr/Comment.nvim',
+    'jaller698/Comment.nvim',
     opts = {
         -- add any options here
     }
@@ -34,7 +36,7 @@
 
 ```lua
 use {
-    'numToStr/Comment.nvim',
+    'jaller698/Comment.nvim',
     config = function()
         require('Comment').setup()
     end
@@ -44,7 +46,7 @@ use {
 - With [vim-plug](https://github.com/junegunn/vim-plug)
 
 ```vim
-Plug 'numToStr/Comment.nvim'
+Plug 'jaller698/Comment.nvim'
 
 " Somewhere after plug#end()
 lua require('Comment').setup()

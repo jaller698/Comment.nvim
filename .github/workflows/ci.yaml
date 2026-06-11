@@ -24,8 +24,8 @@ jobs:
       - name: Generating help
         shell: bash
         run: |
-          curl -Lq https://github.com/numToStr/lemmy-help/releases/latest/download/lemmy-help-x86_64-unknown-linux-gnu.tar.gz | tar xz
-          ./lemmy-help -fact \
+          cargo install --locked --git https://github.com/numToStr/lemmy-help lemmy-help
+          ~/.cargo/bin/lemmy-help -fact \
             lua/Comment/{init.lua,config.lua} plugin/Comment.lua \
             lua/Comment/{api.lua,ft.lua,utils.lua,opfunc.lua,extra.lua} > doc/${{env.PLUGIN_NAME}}.txt
 

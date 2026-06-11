@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 env:
   PLUGIN_NAME: Comment
@@ -17,21 +17,11 @@ env:
 jobs:
   docs:
     runs-on: ubuntu-latest
-    name: emmylua to help doc
+    name: help doc check
     steps:
       - uses: actions/checkout@v4
 
-      - name: Generating help
+      - name: Verify help doc
         shell: bash
         run: |
-          cargo install --locked --git https://github.com/numToStr/lemmy-help lemmy-help
-          ~/.cargo/bin/lemmy-help -fact \
-            lua/Comment/{init.lua,config.lua} plugin/Comment.lua \
-            lua/Comment/{api.lua,ft.lua,utils.lua,opfunc.lua,extra.lua} > doc/${{env.PLUGIN_NAME}}.txt
-
-      - name: Commit
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          branch: ${{ github.ref_name }}
-          commit_message: "chore(docs): auto-generate `:help` doc"
-          file_pattern: doc/*.txt
+          test -s doc/${{env.PLUGIN_NAME}}.txt
